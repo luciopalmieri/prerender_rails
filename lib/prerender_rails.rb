@@ -105,7 +105,7 @@ module Rack
         prerendered_response = get_prerendered_page_response(env,use_second_service)
 
         if prerendered_response
-          response = build_rack_response_from_prerender(prerendered_response)
+          response = build_rack_response_from_prerender(prerendered_response, env)
           after_render(env, prerendered_response)
           return response.finish
         end
@@ -221,14 +221,14 @@ module Rack
     end
 
 
-    def build_rack_response_from_prerender(prerendered_response)
+    def build_rack_response_from_prerender(prerendered_response, env)
       header = prerendered_response.header
 
       header['Content-Length'] = prerendered_response.body.length
 
       response = Rack::Response.new(prerendered_response.body, prerendered_response.code, header)
 
-      @options[:build_rack_response_from_prerender].call(response, prerendered_response) if @options[:build_rack_response_from_prerender]
+      @options[:build_rack_response_from_prerender].call(response, prerendered_response, env) if @options[:build_rack_response_from_prerender]
 
       response
     end
