@@ -35,7 +35,9 @@ module Rack
         'Discordbot',
         'Google Page Speed',
         'Qwantify',
-        'Chrome-Lighthouse'
+        'Chrome-Lighthouse',
+        'SemrushBot',
+        'AhrefsSiteAudit'
       ]
 
       @extensions_to_ignore = [
