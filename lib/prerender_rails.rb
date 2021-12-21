@@ -35,7 +35,6 @@ module Rack
         'Discordbot',
         'Google Page Speed',
         'Qwantify',
-        'Chrome-Lighthouse',
         'SemrushBot',
         'AhrefsSiteAudit'
       ]
